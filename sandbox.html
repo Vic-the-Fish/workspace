@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Sandbox Page</title>
+		<style>
+			section{ 
+				background: -webkit-linear-gradient(top, #44696b, #001818) 
+			}
+			body{ 
+				background: -webkit-linear-gradient(top, #314649, #001818) 
+			}
+			.blue-shadow {
+			  text-shadow: 1px 1px 1px black, 0 0 0.2em blue, 0 0 0.1em blue
+			}
+			.column {
+			  float: left;
+			  width: 50%;
+			}
+			.row:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+			
+			.Title {
+				text-align: center;
+				font-size: 35px;
+				border-radius: 15px;
+				color: rgba(225,225,20,1)
+			}
+		</style>
+	</head>
+	<body style="background-color: #314749;color: #FFEEFF; font-family: comic sans ms" class="blue-shadow">
+		<header style="text-align: center">
+			<h1 style = "background-color: #99BBBE; border-radius: 150px;">Sample Text <em>+ some amazing facts</em></h1>
+			<h2 style = "background-color: #A0A9C2; border-radius: 150px">Sample Text <em>+ some more amazing facts</em></h2>	 
+			<h3 style = "background-color: #8E9CC2; border-radius: 150px">Sample Text <em>+ some even more amazing facts</em></h3>
+			<h4 style = "background-color: #86B9BE; border-radius: 150px">Sample Text <em>+ some more fascinating facts</em></h4>
+			<h5 style = "background-color: #35595C; border-radius: 150px">Sample Text <em>+ no facts</em></h5>
+			<h6 style = "background-color: #004848; border-radius: 150px">Sample Text <em>+ I'm sorry there's only 6 facts</em></h6>
+		</header>
+		<p>&nbsp</p>
+		<section class=Title>
+			<p>Some Stuff</p>
+		</section>
+		<p>&nbsp</p>
+		<div style="text-align: center" class="row">
+			<section style="background-color: rgba(190,210,200,0.2); border-radius: 75px; font-size: 20px" class="column">
+				<header style="font-size: 35px; border-radius: 15px; color: rgba(225,225,20,1)"
+					<p>Facts</p>
+				</header>
+				<p>1. my name is sawyer kamman.</p>
+				<p>2. i like to procrastinate on my homework.</p>
+				<p>3. my name is not actually sawyer kamman.</p>
+				<p>4. i was born somewhere.</p>
+				<p>5. the Roman Empire fell in 476 CE.</p>
+				<p>6. fact 3 is false. i'm sorry.</p>
+				<p>7. i have an eyelash in my eye.</p>
+				<p>8. comic sans is an ok font.</p>
+				<p>9. i should probably use a list tag.</p>
+			</section>
+			<div style="padding: 70px 0" class="column">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/GlarusAlps.jpg" width="600" height="300" style="max-width: 100%; max-height: 1500px; border: inset #44696b 10px">
+				<p><em>This picture represents human indecision</em></p>
+			</div>
+		</div>
+		<section class=Title>
+			<p>Cool things</p>
+		</section>
+		<div>
+			<marquee direction=right behavior=alternate scrollamount = 30>
+				<p>Scrolling text</p>
+			</marquee>
+			<marquee direction=left behavior=alternate scrollamount = 30>
+				<p>Scrolling text</p>
+			</marquee>
+		</div>
+		<div style="margin: auto; width: 150px;height: 250px; overflow: scroll; text-align: center; font-size: 35px">
+			<p>Scrolling text and more scrolling text</p>
+		</div>
+		<p>&nbsp</p>
+		<footer style="font-size: 15px; text-align: center; background-color: #001111; border-top-left-radius: 25px; border-top-right-radius: 25px">
+			<a href="https://www.google.com/">
+				Click here to go somewhere
+			</a>
+			<p>© "Copyright" somebody 2019</p>
+		</footer>
+	</body>
+</html>
