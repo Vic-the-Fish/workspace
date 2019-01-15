@@ -10,6 +10,12 @@
 			body{ 
 				background: -webkit-linear-gradient(top, #314649, #001818) 
 			}
+			.Title {
+				text-align: center;
+				font-size: 35px;
+				border-radius: 15px;
+				color: rgba(225,225,20,1)
+			}	
 			.blue-shadow {
 			  text-shadow: 1px 1px 1px black, 0 0 0.2em blue, 0 0 0.1em blue
 			}
@@ -21,13 +27,20 @@
 			  content: "";
 			  display: table;
 			  clear: both;
+			}	
+			.dissapear:hover {
+				height: 150px;
+				width: 300px;
+				opacity: 0.0;
+				-webkit-transition: all 30s ease-in			
+			}		
+			.spin:hover {
+				transform: rotate(360deg);
+				-webkit-transition: all 1s ease-in	
 			}
-			
-			.Title {
-				text-align: center;
-				font-size: 35px;
-				border-radius: 15px;
-				color: rgba(225,225,20,1)
+			section:hover { 
+				opacity: 0.9;
+				-webkit-transition: all 2s ease-in						
 			}
 		</style>
 	</head>
@@ -61,7 +74,7 @@
 				<p>9. i should probably use a list tag.</p>
 			</section>
 			<div style="padding: 70px 0" class="column">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/GlarusAlps.jpg" width="600" height="300" style="max-width: 100%; max-height: 1500px; border: inset #44696b 10px">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/GlarusAlps.jpg" width="600" height="300" style="max-width: 100%; max-height: 1500px; border: inset #44696b 10px" class="dissapear">
 				<p><em>This picture represents human indecision</em></p>
 			</div>
 		</div>
@@ -70,10 +83,10 @@
 		</section>
 		<div>
 			<marquee direction=right behavior=alternate scrollamount = 30>
-				<p>Scrolling text</p>
+				<p class="spin">Scrolling text</p>
 			</marquee>
 			<marquee direction=left behavior=alternate scrollamount = 30>
-				<p>Scrolling text</p>
+				<p class="spin">Scrolling text</p>
 			</marquee>
 		</div>
 		<div style="margin: auto; width: 150px;height: 250px; overflow: scroll; text-align: center; font-size: 35px">
