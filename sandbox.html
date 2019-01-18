@@ -7,16 +7,14 @@
 			section{ 
 				background: -webkit-linear-gradient(top, #55737a, #002020) 
 			}
-			body{ 
-				background: -webkit-linear-gradient(top, #314649, #001818) 
-			}
 			.Title {
 				text-align: center;
 				font-size: 35px;
 				border-radius: 5px;
 				margin-left: 75px; 
 				margin-right: 75px;
-				color: rgba(225,225,20,1)
+				color: rgba(225,225,20,1);
+				clear: both
 			}	
 			.blue-shadow {
 			  text-shadow: 1px 1px 1px black, 0 0 0.2em blue, 0 0 0.1em blue
@@ -25,7 +23,8 @@
 				height: 150px;
 				width: 300px;
 				opacity: 0.0;
-				-webkit-transition: all 30s ease-in			
+				-webkit-filter: grayscale(100%);
+				-webkit-transition: all 20s ease-in			
 			}		
 			.spin:hover {
 				transform: rotate(360deg);
@@ -49,15 +48,16 @@
 			.block:hover {
 				width: 30px;
 				height: 30px;	
+				-webkit-transition: all 0.1s ease-in	
 			}
 		</style>
 	</head>
-	<body style="background-color: #314749; color: #FFEEFF; font-family: comic sans ms" class="blue-shadow">
+	<body style="background-color: #314749; color: #FFEEFF; font-family: comic sans ms; background: -webkit-linear-gradient(top, #113030, #001818)" class="blue-shadow">
 		<header style="text-align: center; margin-left: 30px; margin-right: 30px">
 			<h1 style = "background-color: #99BBBE; border-radius: 5px">some amazing headers</h1>
-			<h2 style = "background-color: #A0A9C2; border-radius: 5px">some more amazing headers</h2>	 
+			<h2 style = "background-color: #86B9BE; border-radius: 5px">some more amazing headers</h2>	 
 			<h3 style = "background-color: #8E9CC2; border-radius: 5px">some even more amazing headers</h3>
-			<h4 style = "background-color: #86B9BE; border-radius: 5px">even some more fascinating headers</h4>
+			<h4 style = "background-color: #A0A9C2; border-radius: 5px">even some more fascinating headers</h4>
 			<h5 style = "background-color: #35595C; border-radius: 5px">I'm sorry there's only 5 headers</h5>
 		</header>
 		<section class=Title>
@@ -65,7 +65,7 @@
 		</section>
 		<p>&nbsp</p>
 		<div style="text-align: center" class="row">
-			<section style="background-color: rgba(190,210,200,0.2); border-radius: 25px; font-size: 17px; float: left; width: 35%; margin-left: 5%; margin-right: 5%">
+			<section style="background-color: rgba(190,210,200,0.2); border-radius: 25px; font-size: 17px; float: left; width: 35%; margin-left: 100px; clear: left">
 				<header class=Title>
 					<p>Facts</p>
 				</header>
@@ -78,8 +78,9 @@
 				<p>7. i have an eyelash in my eye.</p>
 				<p>8. comic sans is an ok font.</p>
 				<p>9. i should probably use a list tag.</p>
+				<p>10. where are my hats</p>
 			</section>
-			<div style="padding: 70px 0">
+			<div style="padding: 70px 0; float: right; margin-right: 100px; clear: right"">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/GlarusAlps.jpg" width="600" height="300" style="border: inset #44696b 10px" class="dissapear">
 				<p><em>This picture represents human indecision</em></p>
 			</div>
@@ -87,89 +88,97 @@
 		<section class=Title>
 			<p>Cool things</p>
 		</section>
-		<div>
-			<marquee direction=right behavior=alternate scrollamount = 30>
-				<p class="spin">Scrolling text</p>
-			</marquee>
-			<marquee direction=left behavior=alternate scrollamount = 30>
-				<p class="spin">Scrolling text</p>
-			</marquee>
+		<div style="width: 95%; height: 500px; margin: auto; background: -webkit-linear-gradient(top, #334444, #113030); border-radius: 30px">
+			<div>
+				<marquee direction=right behavior=alternate scrollamount = 30>
+					<p class="spin">Scrolling text</p>
+				</marquee>
+				<marquee direction=left behavior=alternate scrollamount = 30>
+					<p class="spin">Scrolling text</p>
+				</marquee>
+			</div>
+			<div>
+				<div style="margin-left: 10%; width: 150px;height: 250px; overflow: auto; text-align: center; font-size: 45px; float: left">
+					<p>Scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text and more scrolling text</p>
+					<p style="font-size: 10px">no more text</p>
+				</div>
+			</div>
+			<div style="width: 200px; height: 200px; background-color: #000000; margin-right: 10%; padding: 25px; float: right">
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row one-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row two-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row three-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row four-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row five-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row six-->
+				<div style="background-color: #ffffff; clear: left" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #000000" class=block></div>
+				<div style="background-color: #ffffff" class=block></div>
+				<!--End row seven-->
+			</div>
+			<div style="height: 150px; width: 150px; margin: auto; background-color: #AA7777" class=cool>
+				<p style="text-align: center; padding: 40px; background-color: #AA7777" class=cool>hover over me please</p>
+			</div>
+			
+			<div style="font-size: 30px; width: 200px; height: 70px; text-align: center; clear: both; padding: 20px; background-color: #000000; font-family: verdana; margin: auto; border-style: outset; border-width: 5px">
+				<a style="text-decoration: none; color: #ffffff" href="sandbox2.html">
+					Click here for regret
+				</a>
+			</div>
 		</div>
-		<div style="margin: auto; width: 150px;height: 250px; overflow: scroll; text-align: center; font-size: 45px">
-			<p>Scrolling text and more scrolling text and more scrolling text and more scrolling text</p>
-		</div>
-		<p>&nbsp</p>		
-		<div style="height: 150px; width: 150px; margin: auto; background-color: #AA7777" class=cool>
-			<p style="text-align: center; padding: 40px; background-color: #AA7777" class=cool>hover over me please</p>
-		</div>
-		<p>&nbsp</p>
-		<div style="width: 200px; height: 200px; background-color: #000000; margin: auto; padding: 40px">
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row one-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row two-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row three-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row four-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row five-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row six-->
-			<div style="background-color: #ffffff; clear: left" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #000000" class=block></div>
-			<div style="background-color: #ffffff" class=block></div>
-			<!--End row seven-->
-		</div>
-		<p>&nbsp</p>	
-		<footer style="font-size: 15px; text-align: center; background-color: #001111; border-top-left-radius: 25px; border-top-right-radius: 25px">
+		<footer style="font-size: 15px; text-align: center; background-color: #001111; border-top-left-radius: 25px; border-top-right-radius: 25px; clear: both; margin-top: 230px">
 			<a href="https://www.google.com/">
 				Click here to go somewhere
 			</a>
