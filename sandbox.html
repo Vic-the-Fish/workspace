@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Sandbox Page</title>
+		<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ12REW3oHtroQ1dd_Nz4AuFRdnG2m36f-1V8RakavAYDr6t4RtQhAj"
+		<meta charset="utf-8">
 		<style>
 			span {
-				color: #990000; 
+				color: #aaaa66; 
 				font-size: 16pt;
 			}
 			.tab {
@@ -13,7 +15,6 @@
 				line-height: 75px;
 				width: 200px;
 				height: 75px;
-				background-color: #444444;
 				color: #FFFFFF;
 				font-weight: bold;
 				border: solid;
@@ -32,21 +33,21 @@
 				clear: both
 			}	
 			.tab:hover {
-				background-color: #444480;
+				background-color: #444480!important;
 			}
 			.dissapear:hover {
 				height: 150px;
 				width: 300px;
 				opacity: 0.0;
 				-webkit-filter: grayscale(100%);
-				-webkit-transition: all 20s ease-in			
+				-webkit-transition: all 20s ease-in;			
 			}		
 			.spin:hover {
 				transform: rotate(360deg);
-				-webkit-transition: all 1s ease-in	
+				-webkit-transition: all 1s ease-in;
 			}
 			.cool:hover {
-				background-color: #113333;
+				background-color: #113333!important;
 				border-radius: 100px;
 				-webkit-transform: rotate(360deg);
 				-webkit-transition: all 2s ease-in		
@@ -73,6 +74,9 @@
 				height: 30px;	
 				-webkit-transition: all 0.1s ease-in	
 			}
+			.hidden:hover {
+				color: #00FF00!important;
+			}
 		</style>
 	</head>
 	<body style="background-color: #000000; color: #FFFFFF; font-family: verdana;">
@@ -83,9 +87,12 @@
 			<h4 style = "background-color: #222233">even some more fascinating headers</h4>
 			<h5 style = "background-color: #111122">I'm sorry there's only 5 headers</h5>
 		</header>
-		<nav style="margin: auto; width: 827px; height: 75px; clear: both; overflow: hidden;">
-			<a href="house.html" style = "background-color: #333333" class=tab>
+		<nav style="margin: auto; width: 1034px; height: 75px; clear: both; overflow: hidden;">
+			<a href="sandbox.html" style = "background-color: #222222" class=tab>
 				home
+			</a>
+			<a href="house.html" style = "background-color: #333333" class=tab>
+				house
 			</a>
 			<a href="school.html" style = "background-color: #444444" class=tab>
 				school
@@ -114,12 +121,12 @@
 				<p><span>5.</span> the Roman Empire fell in 476 CE.</p>
 				<p><span>6.</span> fact 3 is false. i'm sorry.</p>
 				<p><span>7.</span> i have an eyelash in my eye.</p>
-				<p style="font-family: comic sans ms"><span>8.</span> comic sans is an ok font.</p>
+				<a href="font.html" style="font-family: comic sans ms; text-decoration: none; color: #ffffff;" class=hidden><span>8.</span> comic sans is an ok font.</a>
 				<p><span>9.</span> i should probably use a list tag.</p>
 				<p><span>10.</span> where are my hats</p>
 			</div>
 			<div style="background-color: #333333; font-size: 17px; float: right; clear: right; width: 50%; height: 600px">
-				<div style="padding: 70px 0; float: right; margin-right: 100px; margin-left: 100px; clear: right">
+				<div style="padding: 80px 0; float: right; margin-right: 100px; margin-left: 100px; clear: right">
 					<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/GlarusAlps.jpg" width="80%" height="20%" style="border: inset #585966 10px" class="dissapear">
 					<p><em>This picture represents human indecision</em></p>
 				</div>
@@ -208,8 +215,8 @@
 				<div class=white></div>
 				<!--End row seven-->
 			</div>
-			<div style="height: 150px; width: 150px; margin: auto;" class=cool>
-				<p style="text-align: center; padding: 40px;" class=cool>hover over me please</p>
+			<div style="height: 150px; width: 150px; margin: auto; background-color: #888888" class=cool>
+				<p style="text-align: center; line-height: 75px; height: 150px; width: 150px; background-color: #888888" class=cool>hover over me please</p>
 			</div>	
 			<div style="font-size: 30px; width: 200px; height: 70px; text-align: center; clear: both; padding: 20px; background-color: #000000; font-family: verdana; margin: auto; border-style: outset; border-width: 5px">
 				<a style="text-decoration: none; color: #ffffff" href="sandbox2.html">
