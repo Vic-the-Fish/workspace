@@ -4,37 +4,9 @@
 		<meta charset="utf-8">
 		<title>sandbox page</title>
 		<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ12REW3oHtroQ1dd_Nz4AuFRdnG2m36f-1V8RakavAYDr6t4RtQhAj">
+		<link rel="stylesheet" href="sandboxstyle.css">
 		<meta charset="utf-8">
 		<style>
-			span {
-				color: #aaaa66; 
-				font-size: 16pt;
-			}
-			.tab {
-				display: block;
-				line-height: 75px;
-				width: 200px;
-				height: 75px;
-				color: #FFFFFF;
-				font-weight: bold;
-				border: solid;
-				border-color: #000000;
-				text-align: center;
-				float: left;
-			}
-			.Title {
-				text-align: center;
-				font-weight: bold;
-				font-size: 35px;
-				margin-left: 75px; 
-				margin-right: 75px;
-				padding: 10px;
-				color: #FFFFFF;
-				clear: both
-			}	
-			.tab:hover {
-				background-color: #444480!important;
-			}
 			.dissapear:hover {
 				height: 150px;
 				width: 300px;
@@ -75,20 +47,10 @@
 				height: 30px;	
 				-webkit-transition: all 0.1s ease-in	
 			}
-			.hidden:hover {
-				color: #00FF00!important;
-			}
 		</style>
 	</head>
-	<body style="background-color: #000000; color: #FFFFFF; font-family: verdana;">
-		<header style="text-align: center; margin-left: 30px; margin-right: 30px; clear: both">
-			<h1 style = "background-color: #555566">some amazing headers</h1>
-			<h2 style = "background-color: #444455">some more amazing headers</h2>	 
-			<h3 style = "background-color: #333344">some even more amazing headers</h3>
-			<h4 style = "background-color: #222233">even some more fascinating headers</h4>
-			<h5 style = "background-color: #111122">I'm sorry there's only 5 headers</h5>
-		</header>
-		<nav style="margin: auto; width: 1236px; height: 75px; clear: both; overflow: hidden;">
+	<body>
+		<nav>
 			<a href="sandbox.html" style = "background-color: #222222" class=tab>
 				home
 			</a>
@@ -108,6 +70,13 @@
 				about 
 			</a>
 		</nav>
+		<header style="text-align: center; margin-left: 30px; margin-right: 30px; clear: both">
+			<h1 style = "background-color: #555566">some amazing headers</h1>
+			<h2 style = "background-color: #444455">some more amazing headers</h2>	 
+			<h3 style = "background-color: #333344">some even more amazing headers</h3>
+			<h4 style = "background-color: #222233">even some more fascinating headers</h4>
+			<h5 style = "background-color: #111122">I'm sorry there's only 5 headers</h5>
+		</header>
 		<br>
 		<div class=Title>
 			<p>Some Stuff</p>
@@ -224,8 +193,8 @@
 			<div style="height: 150px; width: 150px; margin: auto; background-color: #888888" class=cool>
 				<p style="text-align: center; line-height: 75px; height: 150px; width: 150px; background-color: #888888" class=cool>hover over me please</p>
 			</div>	
-			<div style="font-size: 30px; width: 200px; height: 70px; text-align: center; clear: both; padding: 20px; background-color: #000000; font-family: verdana; margin: auto; border-style: outset; border-width: 5px">
-				<a style="text-decoration: none; color: #ffffff" href="sandbox2.html">
+			<div class=button>
+				<a style="text-decoration: none; color: #ffffff;" href="sandbox2.html">
 					Click here for regret
 				</a>
 			</div>
