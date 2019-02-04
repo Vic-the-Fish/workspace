@@ -7,15 +7,40 @@
 		<link rel="stylesheet" href="sandboxstyle.css">
 	</head>
 	<body>
+		<nav>
+			<a href="sandbox.html" style = "background-color: #222222" class=tab>
+				home
+			</a>
+			<a href="house.html" style = "background-color: #333333" class=tab>
+				house
+			</a>
+			<a href="school.html" style = "background-color: #444444" class=tab>
+				school
+			</a>
+			<a href="work.html" style = "background-color: #555555" class=tab>
+				work
+			</a>
+			<a href="restaurant.html" style = "background-color: #666666" class=tab>
+				restaurant 
+			</a>
+			<a href="about.html" style = "background-color: #777777" class=tab>
+				about 
+			</a>
+		</nav>
 		<header>
 			<h1 class=Title>quiz time</h1>
 		</header>
-		<div style="background-color: #222222; font-size: 17px; margin: auto; width: 70%; height: 600px; text-align: justify">
-			<div>
-				type in anything you want: <input type=text" name="question1">
-			</div>
+		<div style="background-color: #222222; font-size: 17px; margin: auto; width: 50%; height: 600px; text-align: center">
+			<p>(im still trying to figure out how to process answers so shut up)</p>
 			<br>
-			<div style="text-align: center"><input type="submit" value="im done"></div>
+			<form method="post" action="">
+				<input type="hidden" name="answer" value="anything you want:">
+				<div>
+					type in anything you want: <input type=text" name="question1">
+				</div>
+				<br>
+				<div style="text-align: center"><input type="submit" value="im done"></div>
+			</form>
 		</div>
 	</body>
 </html>
