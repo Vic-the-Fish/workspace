@@ -7,23 +7,43 @@
 		<link rel="stylesheet" href="sandboxstyle.css">
 		<style>
 			canvas {
-				background-color: #f1f1f1;
+				background: -webkit-linear-gradient(top,#ccccff,#ccccff,#444444);
 			}
 		</style>
 	</head>
-	<body onload="startGame()">
+	<body style="text-align: center;" onload="startGame()">
+		<nav>
+			<a href="sandbox.html" style = "background-color: #222222" class=tab>
+				home
+			</a>
+			<a href="house.html" style = "background-color: #333333" class=tab>
+				house
+			</a>
+			<a href="school.html" style = "background-color: #444444" class=tab>
+				school
+			</a>
+			<a href="work.html" style = "background-color: #555555" class=tab>
+				work
+			</a>
+			<a href="restaurant.html" style = "background-color: #666666" class=tab>
+				restaurant 
+			</a>
+			<a href="about.html" style = "background-color: #777777" class=tab>
+				about
+			</a>
+		</nav>
 		<script>
 
-			var myGamePiece;
+			var character;
 			var myObstacles = [];
 			var myScore;
 			var ospeed = 3;
 			var interval = 60;
 
 			function startGame() {
-				myGamePiece = new component(15, 15, "red", 10, 120);
-				myGamePiece.gravity = 1;
-				myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+				character = new component(15, 15, "red", 10, 120);
+				character.gravity = 1;
+				myScore = new component("30px", "Consolas", "white", 280, 40, "text");
 				myGameArea.start();
 			}
 
@@ -31,7 +51,7 @@
 				canvas: document.createElement("canvas"),
 				start: function() {
 					this.canvas.width = 800;
-					this.canvas.height = 270;
+					this.canvas.height = 400;
 					this.context = this.canvas.getContext("2d");
 					document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 					this.frameNo = 0;
@@ -102,7 +122,7 @@
 			function updateGameArea() {
 				var x, height, gap, minHeight, maxHeight, minGap, maxGap;
 				for (i = 0; i < myObstacles.length; i += 1) {
-					if (myGamePiece.crashWith(myObstacles[i])) {
+					if (character.crashWith(myObstacles[i])) {
 						return;
 					} 
 				}
@@ -116,18 +136,18 @@
 					minGap = 75;
 					maxGap = 200;
 					gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-					myObstacles.push(new component(10, height, "green", x, 0));
-					myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+					myObstacles.push(new component(5, height, "green", x, 0));
+					myObstacles.push(new component(5, x - height - gap, "green", x, height + gap));
 				}
 				for (i = 0; i < myObstacles.length; i += 1) {
 					myObstacles[i].x += -ospeed;
 					myObstacles[i].update();
 				}
 				myScore.text="SCORE: " + Math.floor(myGameArea.frameNo / 10);
-				ospeed=ospeed + 0.0005;
+				ospeed=ospeed + 0.001;
 				myScore.update();
-				myGamePiece.newPos();
-				myGamePiece.update();
+				character.newPos();
+				character.update();
 			}
 
 			function everyinterval(n) {
@@ -136,18 +156,21 @@
 			}
 
 			function accelerate(n) {
-				myGamePiece.gravity = n;
+				character.gravity = n;
 			}
+			
 			document.body.onkeydown = function(e){
 				if(e.keyCode == 32){
 					accelerate(-0.5)
 				}
 			}
+			
 			document.body.onkeyup = function(e){
 				if(e.keyCode == 32){
 					accelerate(0.5)
 				}
 			}
+			
 		</script>
 		<br>
 		<p>press spacebar to move or whatever</p>
