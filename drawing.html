@@ -91,9 +91,9 @@
 					minGap = 1;
 					maxGap = 400;
 					gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-					myObstacles.push(new component(Math.floor((Math.random() * 5000)-5000)/10, height, rcolor(), x, 0));
+					myObstacles.push(new component(Math.floor((Math.random() * 1)+1)/10, height, rcolor(), x, 0));
 				}
-				for (i = 0; i < myObstacles.length; i += 10) {
+				for (i = 0; i < myObstacles.length; i += 25) {
 					myObstacles[i].x += (Math.floor(Math.random()*4)-4);
 					myObstacles[i].y += (Math.floor(Math.random()*4)-4);
 					myObstacles[i].update();
