@@ -39,7 +39,6 @@
 
 			function startGame() {
 				myGameArea.start();
-				myGameArea.background.opacity = 0;
 			}
 
 			function rcolor() {
@@ -76,8 +75,7 @@
 					ctx.fillRect(this.x, this.y, this.width, this.height);
 					ctx.rotate((Math.random()*Math.PI/180)/20);
 					ctx.opacity = ctx.opacity - 0.05;
-					ctx.save();
-					ctx.restore();
+					
 				}
 			}
 
@@ -88,7 +86,7 @@
 				if (myGameArea.frameNo == 1 || everyinterval(interval)) {
 					x = Math.floor((Math.random() * myGameArea.canvas.width) + 1)
 					minHeight = 1;
-					maxHeight = 30;
+					maxHeight = 100;
 					height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
 					minGap = 1;
 					maxGap = 400;
