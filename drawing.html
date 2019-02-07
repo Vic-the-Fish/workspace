@@ -86,10 +86,10 @@
 				if (myGameArea.frameNo == 1 || everyinterval(interval)) {
 					x = Math.floor((Math.random() * myGameArea.canvas.width) + 1)
 					minHeight = 1;
-					maxHeight = 100;
+					maxHeight = 400;
 					height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
 					minGap = 1;
-					maxGap = 400;
+					maxGap = 200;
 					gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
 					myObstacles.push(new component(Math.floor((Math.random() * 1)+0.1)/10, height, rcolor(), x, 0));
 				}
