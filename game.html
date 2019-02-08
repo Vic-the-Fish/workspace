@@ -37,7 +37,7 @@
 			var character;
 			var myObstacles = [];
 			var myScore;
-			var ospeed = 2;
+			var ospeed = 3;
 			var interval = 60;
 
 			function startGame() {
@@ -144,7 +144,7 @@
 					myObstacles[i].update();
 				}
 				myScore.text="SCORE: " + Math.floor(myGameArea.frameNo / 10);
-				ospeed=ospeed + 0.005;
+				ospeed=ospeed + 0.001;
 				myScore.update();
 				character.newPos();
 				character.update();
