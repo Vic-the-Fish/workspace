@@ -35,13 +35,17 @@
 		<script>
 			var lines = [];
 			var interval = 1;
-			var width=1/100;
+			var width = 1/100;
 			
-			canvas: document.createElement("canvas"),
-
 			function submit() {
-				var width = document.getElementById("userInput").value;
-				myGameArea.start()
+				width = document.getElementById("widthinput").value;
+				speed = document.getElementById("speedinput").value;
+				color = document.getElementById("colorinput").value;
+				var hide = document.getElementById("hide");
+				hide.style.display = "none";
+				var show = document.getElementById("show");
+				show.style.display = "block";
+				myGameArea.start();
 			}
 			
 			function rcolor() {
@@ -106,15 +110,21 @@
 			}
 			
 		</script>
-		<div class=button onclick="myGameArea.start()" style="cursor: pointer;">
+		<form id="hide">
+			<div>
+				line width (WIP): <input type="text" id="widthinput">
+				<br>
+				color (WIP): <input type="text" id="colorinput">
+				<br>
+				speed (WIP): <input type="text" id="speedinput">
+			</div>
+			<div class=button onclick="submit()" style="cursor: pointer;">
+				Start
+			</div>
+		</form>
+		<div class=button onclick="myGameArea.start()" style="cursor: pointer" hidden id="show">
 			Make it worse
 		</div>
-		<form id="form" onsubmit="return false;">
-			<div>
-				width: <input type="text" id="widthinput">
-			</div>
-			<input type="submit" onclick="submit()">
-		</form>
 		<br>
 		<p>this was made out of some bug from the game</p>
 		<br>
