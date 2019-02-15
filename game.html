@@ -7,11 +7,11 @@
 		<link rel="stylesheet" href="sandboxstyle.css">
 		<style>
 			canvas {
-				background: -webkit-linear-gradient(top,#ccccff,#ccccff,#444444);
+				background-color: #ffffff;
 			}
 		</style>
 	</head>
-	<body style="text-align: center;" onload="startGame()">
+	<body style="text-align: center;">
 		<nav>
 			<a href="sandbox.html" style = "background-color: #222222" class=tab>
 				home
@@ -35,28 +35,35 @@
 		<script>
 
 			var character;
-			var myObstacles = [];
-			var myScore;
+			var llines = [];
+			var lvlines = [];			
+			var rlines = [];
+			var rvlines = [];
+			var score;
 			var ospeed = 3;
 			var interval = 60;
+			var on = false;
 
 			function startGame() {
-				character = new component(15, 15, "red", 10, 120);
+				character = new component(15, 15, "red", myGameArea.canvas.width, 120);
 				character.gravity = 1;
-				myScore = new component("30px", "Consolas", "white", 280, 40, "text");
+				score = new component("30px", "Arial", "black", 50, 40, "text");
+				var hide = document.getElementById("hide");
+				hide.style.display = "none";
+				on = true;
 				myGameArea.start();
 			}
 
 			var myGameArea = {
 				canvas: document.createElement("canvas"),
 				start: function() {
-					this.canvas.width = 800;
+					this.canvas.width = 600;
 					this.canvas.height = 400;
 					this.context = this.canvas.getContext("2d");
 					document.body.insertBefore(this.canvas, document.body.childNodes[2]);
 					this.frameNo = 0;
 					this.interval = setInterval(updateGameArea, 20);
-					},
+				},
 				clear: function() {
 					this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 				}
@@ -114,6 +121,9 @@
 					var crash = true;
 					if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
 						crash = false;
+						dead = new component("30px", "Arial", "black", myGameArea.canvas.width, myGameArea.canvas.height, "text");
+						dead.text = "ur dead"
+						dead.update()
 					}
 					return crash;
 				}
@@ -121,37 +131,76 @@
 
 			function updateGameArea() {
 				var x, height, gap, minHeight, maxHeight, minGap, maxGap;
-				for (i = 0; i < myObstacles.length; i += 1) {
-					if (character.crashWith(myObstacles[i])) {
+				for (i = 0; i < llines.length; i += 1) {
+					if (character.crashWith(llines[i])) {
+						return;
+					} 
+				}
+				for (i = 0; i < lvlines.length; i += 1) {
+					if (character.crashWith(lvlines[i])) {
+						return;
+					} 
+				}				
+				for (i = 0; i < rlines.length; i += 1) {
+					if (character.crashWith(rlines[i])) {
+						return;
+					} 
+				}
+				for (i = 0; i < rvlines.length; i += 1) {
+					if (character.crashWith(rvlines[i])) {
 						return;
 					} 
 				}
 				myGameArea.clear();
 				myGameArea.frameNo += 1;
 				if (myGameArea.frameNo == 1 || everyinterval(interval)) {
+					width = (Math.floor(Math.random()*100)+30);
 					x = myGameArea.canvas.width;
-					minHeight = 30;
-					maxHeight = 200;
-					height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-					minGap = 75;
-					maxGap = 200;
-					gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-					myObstacles.push(new component(5, height, "green", x, 0));
-					myObstacles.push(new component(5, x - height - gap, "green", x, height + gap));
+					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
+					llines.push(new component(width, 10, "black", x, y));
+					
+					height = (Math.floor(Math.random()*100)+30);
+					x = myGameArea.canvas.width + 50;
+					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
+					lvlines.push(new component(10, height, "black", x, y));	
+
+					width = (Math.floor(Math.random()*100)+30);
+					x = -100;
+					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
+					rlines.push(new component(width, 10, "black", x, y));
+					
+					height = (Math.floor(Math.random()*100)+30);
+					x = -50;
+					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
+					rvlines.push(new component(10, height, "black", x, y));	
 				}
-				for (i = 0; i < myObstacles.length; i += 1) {
-					myObstacles[i].x += -ospeed;
-					myObstacles[i].update();
+				for (i = 0; i < llines.length; i += 1) {
+					llines[i].x = llines[i].x - ospeed
+					llines[i].update();
 				}
-				myScore.text="SCORE: " + Math.floor(myGameArea.frameNo / 10);
-				ospeed=ospeed + 0.001;
-				myScore.update();
+				for (i = 0; i < lvlines.length; i += 1) {
+					lvlines[i].x = lvlines[i].x - ospeed
+					lvlines[i].update();
+				}						
+				for (i = 0; i < rlines.length; i += 1) {
+					rlines[i].x = rlines[i].x + ospeed
+					rlines[i].update();
+				}
+				for (i = 0; i < rvlines.length; i += 1) {
+					rvlines[i].x = rvlines[i].x + ospeed
+					rvlines[i].update();
+				}				
+				score.text=Math.floor(myGameArea.frameNo/10);
+				ospeed=ospeed + 0.005;
+				score.update();
 				character.newPos();
 				character.update();
 			}
 
 			function everyinterval(n) {
-				if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+				if ((myGameArea.frameNo / n) % 1 == 0) {
+					return true;
+				}
 				return false;
 			}
 
@@ -160,18 +209,20 @@
 			}
 			
 			document.body.onkeydown = function(e){
-				if(e.keyCode == 32){
-					accelerate(-0.5)
+				if(e.keyCode == 32 && on == true){
+					accelerate(-0.5);
 				}
 			}
 			
 			document.body.onkeyup = function(e){
-				if(e.keyCode == 32){
-					accelerate(0.5)
+				if(e.keyCode == 32 && on == true){
+					accelerate(0.5);
 				}
 			}
-			
 		</script>
+		<div class=button onclick="startGame()" style="cursor: pointer;" id = "hide">
+			Start
+		</div>
 		<br>
 		<p>press spacebar to move or whatever</p>
 		<br>
