@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="sandboxstyle.css">
 		<style>
 			canvas {
-				background-color: #ffffff;
+				background-color: #000000;
 			}
 		</style>
 	</head>
@@ -43,18 +43,21 @@
 			var ospeed = 3;
 			var interval = 60;
 			var on = false;
+			var spin = 20000;
 
 			function startGame() {
-				character = new component(15, 15, "red", myGameArea.canvas.width, 120);
+				character = new component(15, 15, "white", area.canvas.width, 120);
 				character.gravity = 1;
-				score = new component("30px", "Arial", "black", 50, 40, "text");
+				score = new component("30px", "Arial", "white", 50, 40, "text");
+				health = new component("30px", "Arial", "white", area.canvas.width - 50, 40, "text");
+				health.text = "100/100";
 				var hide = document.getElementById("hide");
 				hide.style.display = "none";
 				on = true;
-				myGameArea.start();
+				area.start();
 			}
 
-			var myGameArea = {
+			var area = {
 				canvas: document.createElement("canvas"),
 				start: function() {
 					this.canvas.width = 600;
@@ -81,14 +84,17 @@
 				this.gravity = 0;
 				this.gravitySpeed = 0;
 				this.update = function() {
-					ctx = myGameArea.context;
+					ctx = area.context;
 					if (this.type == "text") {
 						ctx.font = this.width + " " + this.height;
 						ctx.fillStyle = color;
 						ctx.fillText(this.text, this.x, this.y);
-					} else {
+					} else if (this != this.canvas) {
 						ctx.fillStyle = color;
 						ctx.fillRect(this.x, this.y, this.width, this.height);
+						ctx.translate(area.canvas.width/2, area.canvas.height/2);
+						ctx.rotate(Math.PI/spin);	
+						ctx.translate(-area.canvas.width/2, -area.canvas.height/2);
 					}
 				}
 				this.newPos = function() {
@@ -98,7 +104,7 @@
 					this.hitBottom();
 				}
 				this.hitBottom = function() {
-					var bottom = myGameArea.canvas.height - this.height;
+					var bottom = area.canvas.height - this.height;
 					var top = 0;
 					if (this.y > bottom) {
 						this.y = bottom;
@@ -121,9 +127,9 @@
 					var crash = true;
 					if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
 						crash = false;
-						dead = new component("30px", "Arial", "black", myGameArea.canvas.width, myGameArea.canvas.height, "text");
-						dead.text = "ur dead"
-						dead.update()
+						dead = new component("30px", "Roboto", "white", area.canvas.width, area.canvas.height, "text");
+						dead.text = "ur dead";
+						ctx.fillText("ur dead", area.canvas.width/2, area.canvas.height/2);
 					}
 					return crash;
 				}
@@ -151,28 +157,28 @@
 						return;
 					} 
 				}
-				myGameArea.clear();
-				myGameArea.frameNo += 1;
-				if (myGameArea.frameNo == 1 || everyinterval(interval)) {
-					width = (Math.floor(Math.random()*100)+30);
-					x = myGameArea.canvas.width;
-					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
-					llines.push(new component(width, 10, "black", x, y));
+				area.clear();
+				area.frameNo += 1;
+				if (area.frameNo == 1 || everyinterval(interval)) {
+					width = (Math.floor(Math.random()*80)+30);
+					x = area.canvas.width;
+					y = (Math.floor(Math.random()*area.canvas.height)+0);	
+					llines.push(new component(width, 10, "white", x, y));
 					
-					height = (Math.floor(Math.random()*100)+30);
-					x = myGameArea.canvas.width + 50;
-					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
-					lvlines.push(new component(10, height, "black", x, y));	
+					height = (Math.floor(Math.random()*80)+30);
+					x = area.canvas.width + 50;
+					y = (Math.floor(Math.random()*area.canvas.height)+0);	
+					lvlines.push(new component(10, height, "white", x, y));	
 
-					width = (Math.floor(Math.random()*100)+30);
+					width = (Math.floor(Math.random()*80)+30);
 					x = -100;
-					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
-					rlines.push(new component(width, 10, "black", x, y));
+					y = (Math.floor(Math.random()*area.canvas.height)+0);	
+					rlines.push(new component(width, 10, "white", x, y));
 					
-					height = (Math.floor(Math.random()*100)+30);
+					height = (Math.floor(Math.random()*80)+30);
 					x = -50;
-					y = (Math.floor(Math.random()*myGameArea.canvas.height)+0);	
-					rvlines.push(new component(10, height, "black", x, y));	
+					y = (Math.floor(Math.random()*area.canvas.height)+0);	
+					rvlines.push(new component(10, height, "white", x, y));	
 				}
 				for (i = 0; i < llines.length; i += 1) {
 					llines[i].x = llines[i].x - ospeed
@@ -190,15 +196,15 @@
 					rvlines[i].x = rvlines[i].x + ospeed
 					rvlines[i].update();
 				}				
-				score.text=Math.floor(myGameArea.frameNo/10);
-				ospeed=ospeed + 0.005;
+				score.text=Math.floor(area.frameNo/10);
 				score.update();
+				health.update();
 				character.newPos();
 				character.update();
 			}
 
 			function everyinterval(n) {
-				if ((myGameArea.frameNo / n) % 1 == 0) {
+				if ((area.frameNo / n) % 1 == 0) {
 					return true;
 				}
 				return false;
@@ -210,13 +216,13 @@
 			
 			document.body.onkeydown = function(e){
 				if(e.keyCode == 32 && on == true){
-					accelerate(-0.5);
+					accelerate(-0.25);
 				}
 			}
 			
 			document.body.onkeyup = function(e){
 				if(e.keyCode == 32 && on == true){
-					accelerate(0.5);
+					accelerate(0.25);
 				}
 			}
 		</script>
