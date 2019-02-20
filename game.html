@@ -11,7 +11,7 @@
 			}
 		</style>
 	</head>
-	<body style="text-align: center;">
+	<body style="text-align: center;" onload="startGame()">
 		<nav>
 			<a href="sandbox.html" style = "background-color: #222222" class=tab>
 				home
@@ -32,28 +32,25 @@
 				about
 			</a>
 		</nav>
+		<div class=Title>
+			<p>Game</p>
+		</div>
 		<script>
 
 			var character;
-			var llines = [];
-			var lvlines = [];			
+			var llines = [];		
 			var rlines = [];
-			var rvlines = [];
 			var score;
-			var ospeed = 3;
+			var health;
+			var ospeed = 7;
 			var interval = 60;
-			var on = false;
-			var spin = 20000;
+			var spin = 40000;
 
 			function startGame() {
 				character = new component(15, 15, "white", area.canvas.width, 120);
 				character.gravity = 1;
 				score = new component("30px", "Arial", "white", 50, 40, "text");
-				health = new component("30px", "Arial", "white", area.canvas.width - 50, 40, "text");
-				health.text = "100/100";
-				var hide = document.getElementById("hide");
-				hide.style.display = "none";
-				on = true;
+				health = 100;
 				area.start();
 			}
 
@@ -63,7 +60,7 @@
 					this.canvas.width = 600;
 					this.canvas.height = 400;
 					this.context = this.canvas.getContext("2d");
-					document.body.insertBefore(this.canvas, document.body.childNodes[2]);
+					document.body.insertBefore(this.canvas, document.body.childNodes[4]);
 					this.frameNo = 0;
 					this.interval = setInterval(updateGameArea, 20);
 				},
@@ -71,7 +68,6 @@
 					this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 				}
 			}
-
 			function component(width, height, color, x, y, type) {
 				this.type = type;
 				this.score = 0;
@@ -89,7 +85,7 @@
 						ctx.font = this.width + " " + this.height;
 						ctx.fillStyle = color;
 						ctx.fillText(this.text, this.x, this.y);
-					} else if (this != this.canvas) {
+					} else if (this.type != "text") {
 						ctx.fillStyle = color;
 						ctx.fillRect(this.x, this.y, this.width, this.height);
 						ctx.translate(area.canvas.width/2, area.canvas.height/2);
@@ -126,79 +122,54 @@
 					var otherbottom = otherobj.y + (otherobj.height);
 					var crash = true;
 					if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-						crash = false;
-						dead = new component("30px", "Roboto", "white", area.canvas.width, area.canvas.height, "text");
-						dead.text = "ur dead";
-						ctx.fillText("ur dead", area.canvas.width/2, area.canvas.height/2);
+						if (health != 0 ) {
+							otherobj = null;
+							crash = false;
+							dead = new component("30px", "Roboto", "white", area.canvas.width, area.canvas.height, "text");
+							ctx.fillText("you lose", area.canvas.width/2, area.canvas.height/2);
+						} else {
+							otherobj = null;
+							health.text == health.text - 1;
+						}
 					}
 					return crash;
 				}
 			}
-
 			function updateGameArea() {
 				var x, height, gap, minHeight, maxHeight, minGap, maxGap;
 				for (i = 0; i < llines.length; i += 1) {
 					if (character.crashWith(llines[i])) {
 						return;
 					} 
-				}
-				for (i = 0; i < lvlines.length; i += 1) {
-					if (character.crashWith(lvlines[i])) {
-						return;
-					} 
-				}				
+				}		
 				for (i = 0; i < rlines.length; i += 1) {
 					if (character.crashWith(rlines[i])) {
-						return;
-					} 
-				}
-				for (i = 0; i < rvlines.length; i += 1) {
-					if (character.crashWith(rvlines[i])) {
 						return;
 					} 
 				}
 				area.clear();
 				area.frameNo += 1;
 				if (area.frameNo == 1 || everyinterval(interval)) {
-					width = (Math.floor(Math.random()*80)+30);
+					width = (Math.floor(Math.random()*70)+30);
 					x = area.canvas.width;
 					y = (Math.floor(Math.random()*area.canvas.height)+0);	
 					llines.push(new component(width, 10, "white", x, y));
-					
-					height = (Math.floor(Math.random()*80)+30);
-					x = area.canvas.width + 50;
-					y = (Math.floor(Math.random()*area.canvas.height)+0);	
-					lvlines.push(new component(10, height, "white", x, y));	
 
-					width = (Math.floor(Math.random()*80)+30);
+					width = (Math.floor(Math.random()*70)+30);
 					x = -100;
 					y = (Math.floor(Math.random()*area.canvas.height)+0);	
 					rlines.push(new component(width, 10, "white", x, y));
-					
-					height = (Math.floor(Math.random()*80)+30);
-					x = -50;
-					y = (Math.floor(Math.random()*area.canvas.height)+0);	
-					rvlines.push(new component(10, height, "white", x, y));	
 				}
 				for (i = 0; i < llines.length; i += 1) {
-					llines[i].x = llines[i].x - ospeed
+					llines[i].x = llines[i].x - (Math.floor(Math.random()*ospeed)+1);
 					llines[i].update();
-				}
-				for (i = 0; i < lvlines.length; i += 1) {
-					lvlines[i].x = lvlines[i].x - ospeed
-					lvlines[i].update();
-				}						
-				for (i = 0; i < rlines.length; i += 1) {
-					rlines[i].x = rlines[i].x + ospeed
-					rlines[i].update();
-				}
-				for (i = 0; i < rvlines.length; i += 1) {
-					rvlines[i].x = rvlines[i].x + ospeed
-					rvlines[i].update();
 				}				
+				for (i = 0; i < rlines.length; i += 1) {
+					rlines[i].x = rlines[i].x + (Math.floor(Math.random()*ospeed)+1);
+					rlines[i].update();
+				}			
 				score.text=Math.floor(area.frameNo/10);
 				score.update();
-				health.update();
 				character.newPos();
 				character.update();
 			}
@@ -215,23 +186,22 @@
 			}
 			
 			document.body.onkeydown = function(e){
-				if(e.keyCode == 32 && on == true){
-					accelerate(-0.25);
+				if(e.keyCode == 32){
+					accelerate(-0.2);
 				}
 			}
 			
 			document.body.onkeyup = function(e){
-				if(e.keyCode == 32 && on == true){
-					accelerate(0.25);
+				if(e.keyCode == 32){
+					accelerate(0.2);
 				}
 			}
 		</script>
-		<div class=button onclick="startGame()" style="cursor: pointer;" id = "hide">
-			Start
+		<div class=button>				
+			<a style="text-decoration: none; color: #ffffff;" href="game.html" title="reset">
+				Reset
+			</a>
 		</div>
-		<br>
 		<p>press spacebar to move or whatever</p>
-		<br>
-		<p>i actually just copied and pasted this<br>i'm going to experiment with it</p>
 	</body>
 </html>

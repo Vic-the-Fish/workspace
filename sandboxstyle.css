@@ -3,21 +3,29 @@ span {
 	font-size: 16pt;
 }
 body {
-	background-color: #000000; 
+	background-color: #000002; 
 	color: #FFFFFF; 
 	font-family: verdana;
 }
 nav{
 	margin: auto; 
-	width: 1236px; 
+	width: 100%; 
 	height: 75px; 
 	clear: both; 
 	overflow: hidden;
 }
+footer {
+	background-color: #111114; 
+	font-size: 15px; 
+	text-align: center; 
+	clear: both; 
+	margin-top: 70px;
+}	
 .button {
 	font-size: 25px; 
 	width: 300px; 
-	height: 30px; text-align: center; 
+	height: 30px; 
+	text-align: center; 
 	clear: both; 
 	padding: 10px; 
 	background-color: #000000; 
@@ -31,7 +39,7 @@ nav{
 .tab {
 	display: block;
 	line-height: 45px;
-	width: 200px;
+	width: 16%;
 	height: 45px;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -39,6 +47,7 @@ nav{
 	border-color: #000000;
 	text-align: center;
 	float: left;
+	text-decoration: none;
 }
 .Title {
 	text-align: center;
