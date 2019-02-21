@@ -1,6 +1,6 @@
 span {
-	color: #aaaa66; 
-	font-size: 16pt;
+	color: #aa2222; 
+	font-size: 14pt;
 }
 body {
 	background-color: #000002; 
@@ -38,9 +38,9 @@ footer {
 }
 .tab {
 	display: block;
-	line-height: 45px;
+	line-height: 35px;
 	width: 16%;
-	height: 45px;
+	height: 35px;
 	color: #FFFFFF;
 	font-weight: bold;
 	border: solid;

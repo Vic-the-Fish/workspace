@@ -85,12 +85,9 @@
 						ctx.font = this.width + " " + this.height;
 						ctx.fillStyle = color;
 						ctx.fillText(this.text, this.x, this.y);
-					} else if (this.type != "text") {
+					} else if (this.type != "text" && this != area.canvas) {
 						ctx.fillStyle = color;
 						ctx.fillRect(this.x, this.y, this.width, this.height);
-						ctx.translate(area.canvas.width/2, area.canvas.height/2);
-						ctx.rotate(Math.PI/spin);	
-						ctx.translate(-area.canvas.width/2, -area.canvas.height/2);
 					}
 				}
 				this.newPos = function() {
@@ -154,7 +151,6 @@
 					x = area.canvas.width;
 					y = (Math.floor(Math.random()*area.canvas.height)+0);	
 					llines.push(new component(width, 10, "white", x, y));
-
 					width = (Math.floor(Math.random()*70)+30);
 					x = -100;
 					y = (Math.floor(Math.random()*area.canvas.height)+0);	
