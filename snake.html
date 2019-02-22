@@ -62,11 +62,16 @@
 			var dx = 0;			
 			var dy = -15;
 			
+			function clear() {
+				ctx.fillStyle = bgcolor;
+				ctx.strokeStyle = bordercolor;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				ctx.strokeRect(0, 0, canvas.width, canvas.height);
+			}
+			
+			clear();
 			forward();		
-			dx = 0;			
-			dy = -15;
 			forward();
-
 			drawSnake();
 			
 			function forward() {
