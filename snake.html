@@ -35,9 +35,11 @@
 		<div class=Title>
 			<p>Snake</p>
 		</div>
-		<canvas id="canvas" width="600" height="450"></canvas>
+		<div style="font-size: 16pt" id="score">Score: 0</div>
+		<br>
+		<canvas id="canvas" width="400" height="400"></canvas>
 		<script>
-		    var bordercolor = "#000000";
+		    var bordercolor = "#252525";
 			var bgcolor = "#222222";
 			  
 			var canvas = document.getElementById("canvas");
@@ -48,50 +50,132 @@
 			
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+			function grid() {
+				for (v = 0; v < canvas.height/20; v += 1) {	
+					for (i = 0; i < canvas.width/20; i += 1) {
+						ctx.fillStyle = bgcolor;
+						ctx.strokestyle = bordercolor;
+						ctx.fillRect(i*20, v*20, 20, 20);
+						ctx.strokeRect(i*20, v*20, 20, 20);	
+					}
+				}
+			}
 			
 			var iy = canvas.height/2;
 			
 			var snake = [
-				{x: 300, y: iy},
-				{x: 285, y: iy},
-				{x: 270, y: iy},
-				{x: 255, y: iy},
-				{x: 240, y: iy},
+				{x: 80, y: iy},
+				{x: 60, y: iy},
+				{x: 40, y: iy},
+				{x: 20, y: iy},
 			];
 			
-			var dx = 0;			
-			var dy = -15;
+			var score = 0;
+			
+			var dx = 20;			
+			var dy = 0;
 			
 			function clear() {
 				ctx.fillStyle = bgcolor;
 				ctx.strokeStyle = bordercolor;
 				ctx.fillRect(0, 0, canvas.width, canvas.height);
 				ctx.strokeRect(0, 0, canvas.width, canvas.height);
+				grid()
 			}
 			
-			clear();
-			forward();		
-			forward();
-			drawSnake();
+			function changeDirection(event) {
+				var keyPressed = event.keyCode;
+				if (keyPressed === 37 && !(dx === 20)) {
+					dx = -20;
+					dy = 0;
+				}
+				if (keyPressed === 38 && !(dy === 20)) {
+					dx = 0;
+					dy = -20;
+				}
+				if (keyPressed === 39 && !(dx === -20)) {
+					dx = 20;
+					dy = 0;
+				}
+				if (keyPressed === 40 && !(dy === -20)) {
+					dx = 0;
+					dy = 20;
+				}
+			}
+			
+			document.addEventListener("keydown", changeDirection)
 			
 			function forward() {
 				var head = {x: snake[0].x + dx, y: snake[0].y + dy};
-				snake.pop();
-				snake.unshift(head);
+				snake.unshift(head);;
+				if (head.x === foodX && head.y === foodY) {
+					food();
+					score += 1;
+					document.getElementById("score").innerHTML = "Score: "+score;
+				} else {
+					snake.pop();
+				}
 			}
-
-			function drawSnake() {
-				snake.forEach(drawSnakePart);
-			}
-			
-			drawSnake()
 			
 			function drawSnakePart(snakePart) {
 				ctx.fillStyle = "#ffffff";
 				ctx.strokestyle = "#aaaaaa";
-				ctx.fillRect(snakePart.x, snakePart.y, 15, 15);
-				ctx.strokeRect(snakePart.x, snakePart.y, 15, 15);
+				ctx.fillRect(snakePart.x, snakePart.y, 20, 20);
+				ctx.strokeRect(snakePart.x, snakePart.y, 20, 20);
 			}
+			
+			function randomTen(min, max) {
+				return Math.round((Math.random() * (max-min) + min) / 20) * 20;
+			}
+			function food() {
+				foodX = randomTen(0, canvas.width - 20);
+				foodY = randomTen(0, canvas.height - 20);
+				snake.forEach(function spawn(part) {
+					var invalid = part.x == foodX && part.y == foodY
+					if (invalid)
+						food();
+					}
+				);
+			}		
+
+			function drawFood() {
+				ctx.fillStyle = "#ff0000";
+				ctx.strokestyle = "#550000";
+				ctx.fillRect(foodX, foodY, 20, 20);
+				ctx.strokeRect(foodX, foodY, 20, 20);
+			}
+			
+			function end() {
+				for (i = 4; i < snake.length; i++) {
+					var collide = snake[i].x === snake[0].x &&
+					snake[i].y === snake[0].y
+					if (collide) return true
+				}
+				var left = snake[0].x < 0;
+				var right = snake[0].x > canvas.width - 20;
+				var top = snake[0].y < 0;
+				var bottom = snake[0].y > canvas.height - 20;
+				return left || 
+					right || 
+					top ||
+					bottom
+			}
+			
+			food()
+			
+			function move() {
+				if (end()) return;
+				setTimeout(function onTick() {
+					clear();
+					drawFood()
+					forward();
+					snake.forEach(drawSnakePart);
+					move();
+				}, 75)
+			}			
+			
+			move()
 			
 		</script>
 	</body>
