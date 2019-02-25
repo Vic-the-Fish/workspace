@@ -86,19 +86,19 @@
 			
 			function changeDirection(event) {
 				var keyPressed = event.keyCode;
-				if (keyPressed === 37 && !(dx === 20)) {
+				if ((keyPressed === 37 || keyPressed === 65) && !(dx === 20)) {
 					dx = -20;
 					dy = 0;
 				}
-				if (keyPressed === 38 && !(dy === 20)) {
+				if ((keyPressed === 38 || keyPressed === 87) && !(dy === 20)) {
 					dx = 0;
 					dy = -20;
 				}
-				if (keyPressed === 39 && !(dx === -20)) {
+				if ((keyPressed === 39 || keyPressed === 68) && !(dx === -20)) {
 					dx = 20;
 					dy = 0;
 				}
-				if (keyPressed === 40 && !(dy === -20)) {
+				if ((keyPressed === 40 || keyPressed === 83) && !(dy === -20)) {
 					dx = 0;
 					dy = 20;
 				}
@@ -108,7 +108,7 @@
 			
 			function forward() {
 				var head = {x: snake[0].x + dx, y: snake[0].y + dy};
-				snake.unshift(head);;
+				snake.unshift(head);
 				if (head.x === foodX && head.y === foodY) {
 					food();
 					score += 1;
@@ -172,11 +172,12 @@
 					forward();
 					snake.forEach(drawSnakePart);
 					move();
-				}, 75)
+				}, 80)
 			}			
 			
 			move()
 			
 		</script>
+		<p>use arrow keys or wasd to move</p>
 	</body>
 </html>
